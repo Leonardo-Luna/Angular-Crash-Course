@@ -1,0 +1,40 @@
+<div class="column gap-1 wrapper">
+  <!-- Foto del producto -->
+  <img [src]="product.image" alt="Product Thumbnail" />
+
+  <!-- Nombre del producto -->
+  <h2 class="title">{{ product.name | truncateName : 16 : "..." }}</h2>
+
+  <!-- Precio del producto -->
+  <div class="row gap-05">
+    <span class="price-label">Price:</span>
+    <span class="price">{{ product.price | price }}</span>
+  </div>
+
+  <p-rating
+    [(ngModel)]="product.rating"
+    [readonly]="true"
+    iconCancelClass="hidden"
+  ></p-rating>
+
+  <div class="row gap-05">
+    <button
+      type="button"
+      pButton
+      icon="pi pi-pencil"
+      (click)="editProduct()"
+      label="Edit"
+    ></button>
+    <button
+      type="button"
+      pButton
+      icon="pi pi-trash"
+      (click)="confirmDelete()"
+      label="Delete"
+      class="p-button-danger"
+      #deleteButton
+    ></button>
+  </div>
+</div>
+
+<p-confirmPopup></p-confirmPopup>

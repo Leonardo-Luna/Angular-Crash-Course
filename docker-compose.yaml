@@ -1,0 +1,17 @@
+services:
+
+  angular:
+    build: .
+    ports:
+      - 4200:4200
+    volumes:
+      - ./AngularCC:/ngFront
+    command: bash -cx "cd /ngFront && ng serve --host 0.0.0.0 --port 4200"
+
+  server:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./AngularCC-Server:/ccServer
+    command: bash -cx "cd /ccServer && npm start"
